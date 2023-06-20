@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -20,7 +20,7 @@ public final class WarpManager {
     private final Map<String, Location> warps;
 
     public WarpManager() {
-        this.warps = new HashMap<>();
+        this.warps = new LinkedHashMap<>(); //preserve order
         this.read();
     }
 
