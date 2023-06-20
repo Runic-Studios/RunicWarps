@@ -1,0 +1,4 @@
+name: RunicWarps
+version: '${version}'
+main: com.runicrealms.runicwarps.RunicWarps
+api-version: '1.19'
