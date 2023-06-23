@@ -38,9 +38,9 @@ public class SetWarpCommand extends BaseCommand {
         WarpManager warpManager = RunicWarps.getInstance().getWarpManager();
 
         if (warpManager.addWarp(args[0], player.getLocation())) {
-            player.sendMessage(Component.text().append(Component.text("Successfully added the " + args[0] + " warp!", NamedTextColor.GREEN)));
+            player.sendMessage(RunicWarps.PREFIX.append(Component.text("Successfully added the " + args[0] + " warp!", NamedTextColor.GREEN)));
         } else {
-            player.sendMessage(Component.text().append(Component.text("The " + args[0] + " warp already exists!", NamedTextColor.RED)));
+            player.sendMessage(RunicWarps.PREFIX.append(Component.text("The " + args[0] + " warp already exists!", NamedTextColor.RED)));
         }
     }
 
@@ -55,9 +55,9 @@ public class SetWarpCommand extends BaseCommand {
         WarpManager warpManager = RunicWarps.getInstance().getWarpManager();
 
         if (warpManager.removeWarp(args[0])) {
-            sender.sendMessage(Component.text().append(Component.text("Successfully removed the " + args[0] + " warp!", NamedTextColor.GREEN)));
+            sender.sendMessage(RunicWarps.PREFIX.append(Component.text("Successfully removed the " + args[0] + " warp!", NamedTextColor.GREEN)));
         } else {
-            sender.sendMessage(Component.text().append(Component.text("The " + args[0] + " warp does not exist!", NamedTextColor.RED)));
+            sender.sendMessage(RunicWarps.PREFIX.append(Component.text("The " + args[0] + " warp does not exist!", NamedTextColor.RED)));
         }
     }
 }

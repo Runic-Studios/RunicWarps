@@ -22,7 +22,7 @@ public class WarpCommand extends BaseCommand {
     @CommandCompletion("@warps @nothing")
     public void onWarp(Player player, String[] args) {
         if (args.length != 1) {
-            player.sendMessage(Component.text().append(Component.text("/warp <warp name>", NamedTextColor.RED)));
+            player.sendMessage(RunicWarps.PREFIX.append(Component.text("/warp <warp name>", NamedTextColor.RED)));
             return;
         }
 
@@ -31,11 +31,11 @@ public class WarpCommand extends BaseCommand {
         Location location = warpManager.getWarp(args[0]);
 
         if (location == null) {
-            player.sendMessage(Component.text().append(Component.text("You have entered an invalid warp!", NamedTextColor.RED)));
+            player.sendMessage(RunicWarps.PREFIX.append(Component.text("You have entered an invalid warp!", NamedTextColor.RED)));
             return;
         }
 
         player.teleport(location, PlayerTeleportEvent.TeleportCause.PLUGIN);
-        player.sendMessage(Component.text().append(Component.text("You have warped to " + args[0] + "!", NamedTextColor.GREEN)));
+        player.sendMessage(RunicWarps.PREFIX.append(Component.text("You have warped to " + args[0] + "!", NamedTextColor.GREEN)));
     }
 }

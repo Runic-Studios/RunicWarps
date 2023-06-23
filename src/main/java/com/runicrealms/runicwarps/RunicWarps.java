@@ -5,6 +5,8 @@ import co.aikar.commands.PaperCommandManager;
 import com.runicrealms.runicwarps.commands.SetWarpCommand;
 import com.runicrealms.runicwarps.commands.WarpCommand;
 import com.runicrealms.runicwarps.commands.WarpsCommand;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -13,6 +15,10 @@ public final class RunicWarps extends JavaPlugin {
     private static RunicWarps plugin;
     private WarpManager warpManager;
     private PaperCommandManager commandManager;
+
+    public static final Component PREFIX = Component.text("[", NamedTextColor.LIGHT_PURPLE)
+            .append(Component.text("RunicWarp", NamedTextColor.DARK_PURPLE))
+            .append(Component.text("] > ", NamedTextColor.LIGHT_PURPLE));
 
     @Override
     public void onEnable() {
@@ -43,16 +49,16 @@ public final class RunicWarps extends JavaPlugin {
     }
 
     @NotNull
-    public WarpManager getWarpManager() {
-        return this.warpManager;
-    }
-
-    @NotNull
     public static RunicWarps getInstance() {
         if (RunicWarps.plugin == null) {
             throw new IllegalStateException("You have tried to access the singleton instance before the plugin was enabled!");
         }
 
         return RunicWarps.plugin;
+    }
+
+    @NotNull
+    public WarpManager getWarpManager() {
+        return this.warpManager;
     }
 }
