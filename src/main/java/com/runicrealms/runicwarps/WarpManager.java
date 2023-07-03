@@ -2,6 +2,7 @@ package com.runicrealms.runicwarps;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.jetbrains.annotations.NotNull;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
 
 /**
  * A class responsible for IO and caching warps
@@ -117,7 +119,14 @@ public final class WarpManager {
                 continue;
             }
 
-            this.warps.put(name, new Location(Bukkit.getWorld(worldName), x, y, z, yaw.floatValue(), pitch.floatValue()));
+            World world = Bukkit.getWorld(worldName);
+
+            if (world == null) {
+                RunicWarps.getInstance().getLogger().log(Level.SEVERE, "The provided world name " + worldName + " from disk does not map to a world!");
+                continue;
+            }
+
+            this.warps.put(name, new Location(world, x, y, z, yaw.floatValue(), pitch.floatValue()));
         }
     }
 
