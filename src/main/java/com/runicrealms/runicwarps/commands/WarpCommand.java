@@ -30,7 +30,7 @@ public class WarpCommand extends BaseCommand {
 
         Location location = warpManager.getWarp(args[0]);
 
-        if (location == null) {
+        if (location == null || !location.isWorldLoaded()) {
             player.sendMessage(RunicWarps.PREFIX.append(Component.text("You have entered an invalid warp!", NamedTextColor.RED)));
             return;
         }

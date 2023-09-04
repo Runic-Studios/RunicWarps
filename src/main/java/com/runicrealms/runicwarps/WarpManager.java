@@ -142,6 +142,10 @@ public final class WarpManager {
             ConfigurationSection warp = warps.createSection(name);
             Location location = this.warps.get(name);
 
+            if (!location.isWorldLoaded()) {
+                continue;
+            }
+
             warp.set("world", location.getWorld().getName());
             warp.set("x", location.getX());
             warp.set("y", location.getY());
